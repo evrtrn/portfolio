@@ -379,7 +379,7 @@ button {
   font-size: 15px;
   line-height: 1.75;
   color: var(--color-gray-700);
-  max-width: 380px;
+  max-width: 540px;
   margin-bottom: var(--space-6);
   opacity: 0;
   animation: fade-up var(--dur-slow) var(--ease-out) 0.55s both;
