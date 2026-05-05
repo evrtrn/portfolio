@@ -1,0 +1,1002 @@
+/* ============================================================
+   EVELYN KUANG — PORTFOLIO
+   css/styles.css
+
+   TABLE OF CONTENTS
+   1.  Tokens
+   2.  Reset & base
+   3.  Typography utilities
+   4.  Layout
+   5.  Navigation
+   6.  Hero (homepage left panel)
+   7.  Projects panel (homepage right panel)
+   8.  Project cards
+   9.  Case study hero
+   10. Case study phase layout
+   11. Case study content blocks
+   12. Case study next-project bar
+   13. Shared components (buttons, links, footer)
+   14. Animations & scroll-reveal
+   15. Responsive breakpoints
+   ============================================================ */
+
+
+/* ============================================================
+   1. TOKENS
+   ============================================================ */
+:root {
+  /* --- Colour (black & white; accent added via override later) --- */
+  --color-black:    #0A0A0A;
+  --color-white:    #FFFFFF;
+  --color-gray-50:  #FAFAFA;
+  --color-gray-100: #F4F4F4;
+  --color-gray-200: #E8E8E8;
+  --color-gray-300: #D0D0D0;
+  --color-gray-400: #ABABAB;
+  --color-gray-500: #888888;
+  --color-gray-700: #444444;
+
+  /* --- Typography --- */
+  --font-family:      'Inter', sans-serif;
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+
+  /* --- Spacing (8-point scale) --- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  80px;
+
+  /* --- Layout --- */
+  --nav-height:  64px;
+  --panel-pad:   clamp(40px, 6vw, 80px);
+  --content-max: 1100px;
+
+  /* --- Radius --- */
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   8px;
+  --radius-full: 9999px;
+
+  /* --- Motion --- */
+  --ease-out:       cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast:       0.15s;
+  --dur-base:       0.2s;
+  --dur-slow:       0.6s;
+}
+
+
+/* ============================================================
+   2. RESET & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+/* Keyboard focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-black);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+
+/* ============================================================
+   3. TYPOGRAPHY UTILITIES
+   ============================================================ */
+
+/* Display — homepage hero name */
+.type-display {
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: var(--weight-bold);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+/* Heading 1 — case study title */
+.type-h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: var(--weight-bold);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+}
+
+/* Heading 2 — section titles */
+.type-h2 {
+  font-size: 22px;
+  font-weight: var(--weight-semibold);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* Heading 3 — block headings */
+.type-h3 {
+  font-size: 20px;
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Body large */
+.type-body-lg {
+  font-size: 17px;
+  font-weight: var(--weight-regular);
+  line-height: 1.75;
+}
+
+/* Body default */
+.type-body {
+  font-size: 15px;
+  font-weight: var(--weight-regular);
+  line-height: 1.8;
+}
+
+/* Label / eyebrow */
+.type-label {
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+}
+
+
+/* ============================================================
+   4. LAYOUT
+   ============================================================ */
+
+/* Page wrapper — accounts for fixed nav */
+.page {
+  padding-top: var(--nav-height);
+}
+
+/* Constrained centred column */
+.container {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: clamp(24px, 6vw, 80px);
+}
+
+/* Homepage two-column split */
+.layout-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  padding-top: var(--nav-height);
+}
+
+
+/* ============================================================
+   5. NAVIGATION
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 4vw, 48px);
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-gray-200);
+  z-index: 100;
+}
+
+/* Logo */
+.nav__logo {
+  font-size: 15px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  transition: opacity var(--dur-base);
+}
+.nav__logo:hover { opacity: 0.6; }
+
+/* Main links */
+.nav__links {
+  display: flex;
+  gap: var(--space-8);
+}
+.nav__links a {
+  font-size: 13px;
+  font-weight: var(--weight-medium);
+  color: var(--color-gray-500);
+  transition: color var(--dur-base);
+}
+.nav__links a:hover,
+.nav__links a[aria-current="page"] {
+  color: var(--color-black);
+}
+
+/* Resume CTA */
+.nav__cta {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-black);
+  border: 1.5px solid var(--color-gray-200);
+  padding: 7px 16px;
+  border-radius: var(--radius-md);
+  transition:
+    border-color var(--dur-base),
+    background-color var(--dur-base),
+    color var(--dur-base);
+}
+.nav__cta:hover {
+  border-color: var(--color-black);
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+/* Case-study nav variant */
+.nav__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+.nav__back {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: var(--weight-medium);
+  color: var(--color-gray-500);
+  transition: color var(--dur-base);
+}
+.nav__back:hover { color: var(--color-black); }
+.nav__divider {
+  width: 1px;
+  height: 16px;
+  background-color: var(--color-gray-200);
+  flex-shrink: 0;
+}
+
+
+/* ============================================================
+   6. HERO — left panel
+   ============================================================ */
+.hero {
+  position: sticky;
+  top: var(--nav-height);
+  height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--color-gray-200);
+  overflow: hidden;
+}
+
+.hero__inner {
+  padding: var(--panel-pad);
+  width: 100%;
+}
+
+/* Role tag */
+.hero__role {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin-bottom: var(--space-5);
+  opacity: 0;
+  animation: fade-up var(--dur-slow) var(--ease-out) 0.1s both;
+}
+.hero__role-dash {
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-black);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Name */
+.hero__name {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: var(--weight-bold);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--color-black);
+  margin-bottom: var(--space-5);
+}
+.hero__name-line {
+  display: block;
+  opacity: 0;
+  animation: fade-up 0.7s var(--ease-out) calc(0.2s + var(--i, 0) * 0.1s) both;
+}
+
+/* Location */
+.hero__location {
+  font-size: 12px;
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-5);
+  opacity: 0;
+  animation: fade-up var(--dur-slow) var(--ease-out) 0.45s both;
+}
+
+/* Body */
+.hero__body {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-gray-700);
+  max-width: 380px;
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  animation: fade-up var(--dur-slow) var(--ease-out) 0.55s both;
+}
+
+/* Actions */
+.hero__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-7);
+  opacity: 0;
+  animation: fade-up var(--dur-slow) var(--ease-out) 0.65s both;
+}
+
+/* Contact icons */
+.hero__contact {
+  display: flex;
+  gap: var(--space-5);
+  align-items: center;
+  opacity: 0;
+  animation: fade-up var(--dur-slow) var(--ease-out) 0.75s both;
+}
+.hero__contact-icon {
+  color: var(--color-gray-400);
+  display: flex;
+  align-items: center;
+  transition: color var(--dur-fast), transform var(--dur-fast);
+}
+.hero__contact-icon:hover {
+  color: var(--color-black);
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   7. PROJECTS PANEL — right panel
+   ============================================================ */
+.projects-panel {
+  background-color: var(--color-white);
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-feed {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* View all bar */
+.view-all-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--panel-pad);
+  border-top: 1px solid var(--color-gray-200);
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-black);
+  cursor: pointer;
+  transition: background-color var(--dur-base);
+  margin-top: auto;
+}
+.view-all-bar:hover { background-color: var(--color-gray-50); }
+.view-all-bar svg { transition: transform var(--dur-base); flex-shrink: 0; }
+.view-all-bar:hover svg { transform: translateX(4px); }
+
+
+/* ============================================================
+   8. PROJECT CARDS
+   ============================================================ */
+.project-card {
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
+  overflow: hidden;
+  opacity: 0;
+  animation: fade-up 0.65s var(--ease-out) calc(0.3s + var(--i, 0) * 0.12s) both;
+  transition: background-color var(--dur-base);
+}
+.project-card:hover { background-color: var(--color-gray-50); }
+
+.card-inner { padding: 40px; }
+
+/* Image */
+.card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-gray-100), var(--color-gray-200));
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease-out);
+}
+.project-card:hover .card-image img { transform: scale(1.02); }
+
+/* Placeholder (no image) */
+.card-image__placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-gray-100), var(--color-gray-200));
+  transition: transform 0.4s var(--ease-out);
+}
+.project-card:hover .card-image__placeholder { transform: scale(1.02); }
+
+/* Body */
+.card-body { padding-top: var(--space-5); }
+
+.card-meta {
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-2);
+}
+.card-title {
+  font-size: 20px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  color: var(--color-black);
+  margin-bottom: 10px;
+}
+.card-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-gray-700);
+  margin-bottom: var(--space-4);
+}
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-black);
+  transition: gap var(--dur-base);
+}
+.card-link:hover { gap: 10px; }
+.card-link svg { flex-shrink: 0; }
+
+
+/* ============================================================
+   9. CASE STUDY — HERO
+   ============================================================ */
+.cs-hero {
+  padding-top: clamp(60px, 8vw, 100px);
+  padding-bottom: 0;
+}
+
+.cs-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-5);
+  opacity: 0;
+  animation: fade-up 0.5s var(--ease-out) 0.05s both;
+}
+.cs-eyebrow__dash {
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background-color: var(--color-black);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.cs-title {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--color-black);
+  max-width: 800px;
+  margin-bottom: var(--space-5);
+  opacity: 0;
+  animation: fade-up 0.6s var(--ease-out) 0.1s both;
+}
+
+.cs-summary {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--color-gray-700);
+  max-width: 580px;
+  margin-bottom: var(--space-7);
+  opacity: 0;
+  animation: fade-up 0.6s var(--ease-out) 0.18s both;
+}
+
+/* Meta strip */
+.cs-meta {
+  display: flex;
+  border-top: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid var(--color-gray-200);
+  opacity: 0;
+  animation: fade-up 0.6s var(--ease-out) 0.25s both;
+}
+.cs-meta__item {
+  flex: 1;
+  padding: var(--space-5);
+  border-right: 1px solid var(--color-gray-200);
+}
+.cs-meta__item:last-child { border-right: none; }
+.cs-meta__label {
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-2);
+}
+.cs-meta__value {
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-black);
+}
+
+/* Full-bleed image */
+.cs-hero-image {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  background-color: var(--color-gray-100);
+  opacity: 0;
+  animation: fade-up 0.7s var(--ease-out) 0.35s both;
+}
+.cs-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ============================================================
+   10. CASE STUDY — PHASE LAYOUT
+   ============================================================ */
+.cs-body {
+  padding-bottom: var(--space-9);
+}
+
+.cs-phase {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  column-gap: var(--space-8);
+  padding-block: 72px;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+.cs-phase:last-of-type { border-bottom: none; }
+
+/* Sticky label */
+.cs-phase__label {
+  position: sticky;
+  top: calc(var(--nav-height) + 32px);
+  align-self: start;
+  height: fit-content;
+}
+.cs-phase__number {
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-2);
+}
+.cs-phase__name {
+  font-size: 22px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  color: var(--color-black);
+  line-height: 1.1;
+}
+
+/* Content column */
+.cs-phase__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+
+/* ============================================================
+   11. CASE STUDY — CONTENT BLOCKS
+   ============================================================ */
+
+/* Block eyebrow */
+.cs-block__eyebrow {
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-3);
+}
+
+/* Block heading */
+.cs-block__heading {
+  font-size: 20px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  color: var(--color-black);
+  margin-bottom: var(--space-3);
+}
+
+/* Block body copy */
+.cs-block__body {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--color-gray-700);
+}
+.cs-block__body + .cs-block__body { margin-top: var(--space-4); }
+.cs-block__body strong { font-weight: var(--weight-semibold); color: var(--color-black); }
+
+/* Images */
+.cs-image {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-gray-100), var(--color-gray-200));
+}
+.cs-image--16-9   { aspect-ratio: 16 / 9; }
+.cs-image--4-3    { aspect-ratio: 4 / 3; }
+.cs-image--square { aspect-ratio: 1 / 1; }
+.cs-image--dark   { background-color: var(--color-gray-200); }
+.cs-image img     { width: 100%; height: 100%; object-fit: cover; }
+
+.cs-image-caption {
+  font-size: 12px;
+  font-weight: var(--weight-medium);
+  color: var(--color-gray-400);
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Image grids */
+.cs-image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+.cs-image-grid--3 {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-3);
+}
+
+/* Stats */
+.cs-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background-color: var(--color-gray-200);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.cs-stat {
+  background-color: var(--color-white);
+  padding: var(--space-5);
+}
+.cs-stat__value {
+  font-size: 36px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.03em;
+  color: var(--color-black);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+.cs-stat__label {
+  font-size: 13px;
+  font-weight: var(--weight-medium);
+  color: var(--color-gray-500);
+  line-height: 1.4;
+}
+
+/* Pull quote */
+.cs-insight {
+  border-left: 3px solid var(--color-black);
+  padding: var(--space-1) 0 var(--space-1) var(--space-5);
+}
+.cs-insight p {
+  font-size: 17px;
+  font-weight: var(--weight-semibold);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--color-black);
+}
+
+/* Bullet list */
+.cs-list { display: flex; flex-direction: column; gap: 10px; }
+.cs-list__item { display: flex; gap: var(--space-4); align-items: flex-start; }
+.cs-list__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-black);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+.cs-list__item p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-gray-700);
+}
+
+
+/* ============================================================
+   12. NEXT PROJECT BAR
+   ============================================================ */
+.cs-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-7) clamp(24px, 6vw, 80px);
+  border-top: 1px solid var(--color-gray-200);
+  transition: background-color var(--dur-base);
+}
+.cs-next:hover { background-color: var(--color-gray-50); }
+
+.cs-next__label {
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-gray-400);
+  margin-bottom: var(--space-2);
+}
+.cs-next__title {
+  font-size: 24px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.02em;
+  color: var(--color-black);
+}
+.cs-next__arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-black);
+  transition:
+    background-color var(--dur-base),
+    border-color var(--dur-base),
+    color var(--dur-base);
+}
+.cs-next:hover .cs-next__arrow {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-white);
+}
+
+
+/* ============================================================
+   13. SHARED COMPONENTS
+   ============================================================ */
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+  border-radius: var(--radius-md);
+  padding: 13px 26px;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-base),
+    border-color var(--dur-base),
+    color var(--dur-base),
+    transform var(--dur-fast);
+  text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn--primary {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+.btn--primary:hover { background-color: #222222; }
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-black);
+  border: 1.5px solid var(--color-gray-200);
+  padding: 12px 24px;
+}
+.btn--outline:hover {
+  border-color: var(--color-black);
+  background-color: var(--color-gray-50);
+}
+
+/* --- Inline link with underline animation --- */
+.link {
+  color: var(--color-black);
+  font-weight: var(--weight-medium);
+  position: relative;
+}
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-black);
+  transition: width 0.25s var(--ease-out);
+}
+.link:hover::after { width: 100%; }
+
+/* --- Footer --- */
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding: var(--space-6) clamp(20px, 4vw, 48px);
+  border-top: 1px solid var(--color-gray-200);
+  font-size: 12px;
+  color: var(--color-gray-400);
+}
+.site-footer a {
+  color: var(--color-gray-400);
+  transition: color var(--dur-base);
+}
+.site-footer a:hover { color: var(--color-black); }
+
+
+/* ============================================================
+   14. ANIMATIONS & SCROLL-REVEAL
+   ============================================================ */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Applied by script.js IntersectionObserver */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ============================================================
+   15. RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* ── Tablet (≤ 900px) ── */
+@media (max-width: 900px) {
+
+  .layout-split {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    position: static;
+    height: auto;
+    min-height: 100svh;
+    border-right: none;
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .projects-panel { min-height: unset; }
+
+  .nav__links { display: none; }
+
+  .cs-meta { flex-wrap: wrap; }
+  .cs-meta__item {
+    flex: 1 1 calc(50% - 1px);
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .cs-phase {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-6);
+    padding-block: var(--space-7);
+  }
+  .cs-phase__label { position: static; }
+
+  .cs-stats { grid-template-columns: 1fr; }
+
+  .cs-image-grid,
+  .cs-image-grid--3 { grid-template-columns: 1fr; }
+}
+
+/* ── Mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+
+  .hero__name { font-size: 52px; }
+
+  .hero__actions { flex-direction: column; }
+  .hero__actions .btn { width: 100%; }
+
+  .card-inner { padding: 24px; }
+}

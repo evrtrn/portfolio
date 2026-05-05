@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System — Evelyn Kuang</title>
+  <meta name="robots" content="noindex" />
+  <!-- Internal reference doc: not part of the public site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      /* Mirrors css/styles.css tokens */
+      --color-black:    #0A0A0A;
+      --color-white:    #FFFFFF;
+      --color-gray-50:  #FAFAFA;
+      --color-gray-100: #F4F4F4;
+      --color-gray-200: #E8E8E8;
+      --color-gray-300: #D0D0D0;
+      --color-gray-400: #ABABAB;
+      --color-gray-500: #888888;
+      --color-gray-700: #444444;
+      --font-family:    'Inter', sans-serif;
+      --ease-out:       cubic-bezier(0.22, 1, 0.36, 1);
+
+      /* Aliases for DS doc internal use */
+      --black:  var(--color-black);
+      --white:  var(--color-white);
+      --gray-50:  var(--color-gray-50);
+      --gray-100: var(--color-gray-100);
+      --gray-200: var(--color-gray-200);
+      --gray-300: var(--color-gray-300);
+      --gray-400: var(--color-gray-400);
+      --gray-500: var(--color-gray-500);
+      --gray-700: var(--color-gray-700);
+      --ff:       var(--font-family);
+
+      /* DS doc layout */
+      --sidebar-w:   220px;
+      --content-max: 820px;
+      --section-gap: 72px;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff);
+      background: var(--white);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      min-height: 100vh;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── SIDEBAR ────────────────────────────────────────────── */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      width: var(--sidebar-w);
+      background: var(--gray-50);
+      border-right: 1px solid var(--gray-200);
+      display: flex;
+      flex-direction: column;
+      padding: 32px 0;
+      overflow-y: auto;
+      z-index: 50;
+    }
+
+    .sidebar-brand {
+      padding: 0 24px 28px;
+      border-bottom: 1px solid var(--gray-200);
+      margin-bottom: 20px;
+    }
+    .sidebar-brand-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--black);
+    }
+    .sidebar-brand-sub {
+      font-size: 11px;
+      color: var(--gray-400);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    .sidebar-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      padding: 0 24px;
+      margin-bottom: 6px;
+      margin-top: 16px;
+    }
+
+    .sidebar-link {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-500);
+      padding: 7px 24px;
+      border-left: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .sidebar-link:hover {
+      color: var(--black);
+      background: var(--gray-200);
+    }
+    .sidebar-link.active {
+      color: var(--blue);
+      border-left-color: var(--blue);
+      background: var(--blue-10);
+    }
+
+    /* ─── MAIN CONTENT ───────────────────────────────────────── */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      padding: 64px clamp(32px, 6vw, 80px);
+      max-width: calc(var(--sidebar-w) + var(--content-max) + 160px);
+    }
+
+    /* ─── PAGE HEADER ────────────────────────────────────────── */
+    .page-header {
+      border-bottom: 1px solid var(--gray-200);
+      padding-bottom: 40px;
+      margin-bottom: var(--section-gap);
+    }
+    .page-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .page-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 16px; height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+    }
+    .page-title {
+      font-size: 40px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      margin-bottom: 16px;
+    }
+    .page-desc {
+      font-size: 15px;
+      color: var(--gray-500);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ─── SECTION ────────────────────────────────────────────── */
+    .ds-section {
+      margin-bottom: var(--section-gap);
+      scroll-margin-top: 40px;
+    }
+    .ds-section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .ds-section-title {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .ds-section-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray-400);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .ds-section-desc {
+      font-size: 14px;
+      color: var(--gray-500);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: 560px;
+    }
+    .ds-divider {
+      height: 1px;
+      background: var(--gray-200);
+      margin-bottom: 28px;
+    }
+
+    /* ─── SUBSECTION ─────────────────────────────────────────── */
+    .ds-sub {
+      margin-bottom: 36px;
+    }
+    .ds-sub-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 14px;
+    }
+
+    /* ─── PREVIEW BOX ────────────────────────────────────────── */
+    .preview {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 32px;
+      margin-bottom: 12px;
+    }
+    .preview.dark {
+      background: var(--black);
+      border-color: #222;
+    }
+    .preview.centered {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ─── SPEC TABLE ─────────────────────────────────────────── */
+    .spec-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr;
+      gap: 1px;
+      background: var(--gray-200);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+    .spec-row > div {
+      background: var(--white);
+      padding: 10px 14px;
+      color: var(--gray-700);
+    }
+    .spec-row > div:first-child {
+      color: var(--gray-400);
+      font-weight: 500;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .spec-val {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--black);
+      font-weight: 600;
+    }
+
+    /* ─── COLOR GRID ─────────────────────────────────────────── */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 10px;
+    }
+    .color-swatch {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+    }
+    .swatch-preview {
+      height: 64px;
+    }
+    .swatch-info {
+      padding: 10px 12px;
+      background: var(--white);
+    }
+    .swatch-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+    .swatch-hex {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: var(--gray-400);
+    }
+    .swatch-usage {
+      font-size: 10px;
+      color: var(--gray-400);
+      margin-top: 2px;
+    }
+
+    /* ─── TYPE SPECIMEN ──────────────────────────────────────── */
+    .type-row {
+      display: grid;
+      grid-template-columns: 160px 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .type-row:first-child { padding-top: 0; }
+    .type-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+    .type-meta {
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      color: var(--gray-400);
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    /* ─── SPACING SCALE ──────────────────────────────────────── */
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .spacing-bar-wrap {
+      display: flex;
+      align-items: center;
+      width: 120px;
+    }
+    .spacing-bar {
+      height: 8px;
+      background: var(--blue);
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+    .spacing-token {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--black);
+      font-weight: 600;
+      width: 80px;
+    }
+    .spacing-px {
+      font-size: 12px;
+      color: var(--gray-400);
+      width: 48px;
+    }
+    .spacing-use {
+      font-size: 12px;
+      color: var(--gray-500);
+    }
+
+    /* ─── RADIUS DEMOS ───────────────────────────────────────── */
+    .radius-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .radius-item {
+      text-align: center;
+    }
+    .radius-box {
+      width: 72px;
+      height: 72px;
+      background: var(--gray-200);
+      border: 2px solid var(--gray-400);
+      margin: 0 auto 8px;
+    }
+    .radius-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray-500);
+    }
+    .radius-val {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: var(--gray-400);
+    }
+
+    /* ─── SHADOW DEMOS ───────────────────────────────────────── */
+    .shadow-grid {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding: 8px 4px;
+    }
+    .shadow-item {
+      text-align: center;
+    }
+    .shadow-box {
+      width: 80px;
+      height: 56px;
+      background: var(--white);
+      border-radius: 8px;
+      margin: 0 auto 10px;
+    }
+    .shadow-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray-500);
+    }
+
+    /* ─── BUTTON DEMOS ───────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-btn);
+      color: var(--white);
+      font-family: var(--ff);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 13px 26px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--blue-8); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--black);
+      font-family: var(--ff);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 6px;
+      border: 1.5px solid var(--gray-200);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--black); background: var(--gray-50); transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--blue);
+      font-family: var(--ff);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-ghost:hover { background: var(--blue-10); }
+
+    /* ─── NAV DEMO ───────────────────────────────────────────── */
+    .nav-demo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 56px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+    }
+    .nav-demo-logo {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .nav-demo-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-demo-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-500);
+    }
+    .nav-demo-cta {
+      font-size: 13px;
+      font-weight: 600;
+      border: 1.5px solid var(--gray-200);
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+
+    /* ─── PROJECT CARD DEMO ──────────────────────────────────── */
+    .card-demo {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      overflow: hidden;
+    }
+    .card-demo-img {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+    }
+    .card-demo-tag {
+      position: absolute;
+      top: 14px; left: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--blue);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .card-demo-body {
+      padding: 18px 20px 20px;
+    }
+    .card-demo-meta {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 4px;
+    }
+    .card-demo-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .card-demo-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--gray-700);
+      margin-bottom: 14px;
+    }
+    .card-demo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    /* ─── ICON ROW ───────────────────────────────────────────── */
+    .icon-row {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .icon-item svg {
+      color: var(--gray-400);
+    }
+    .icon-item span {
+      font-size: 11px;
+      color: var(--gray-400);
+      font-weight: 500;
+    }
+
+    /* ─── HERO DEMO ──────────────────────────────────────────── */
+    .hero-demo {
+      padding: 40px;
+      background: var(--white);
+      border-radius: 8px;
+    }
+    .hero-demo-role {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .role-dash {
+      width: 18px; height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .hero-demo-name {
+      font-size: 60px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .hero-demo-sub {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 18px;
+    }
+    .hero-demo-body {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--gray-700);
+      max-width: 360px;
+      margin-bottom: 28px;
+    }
+    .hero-demo-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .hero-demo-icons {
+      display: flex;
+      gap: 20px;
+    }
+    .hero-demo-icons svg {
+      color: var(--gray-400);
+    }
+
+    /* ─── INLINE LINK ────────────────────────────────────────── */
+    .inline-link {
+      color: var(--blue);
+      font-weight: 500;
+      position: relative;
+    }
+    .inline-link::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0;
+      width: 0; height: 1px;
+      background: var(--blue);
+      transition: width 0.25s var(--ease-out);
+    }
+    .inline-link:hover::after { width: 100%; }
+
+    /* ─── TOKEN CHIPS ────────────────────────────────────────── */
+    .token-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      border-radius: 5px;
+      padding: 4px 10px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--black);
+      font-weight: 600;
+    }
+
+    /* ─── VIEW ALL BAR DEMO ──────────────────────────────────── */
+    .view-all-demo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .view-all-demo:hover { background: var(--gray-50); color: var(--blue); }
+
+    /* ─── SCROLLSPY ──────────────────────────────────────────── */
+    .sidebar-link { cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-name">Evelyn Kuang</div>
+      <div class="sidebar-brand-sub">Design System v1.0</div>
+    </div>
+
+    <div class="sidebar-section-label">Foundations</div>
+    <a class="sidebar-link" href="#colors">Color</a>
+    <a class="sidebar-link" href="#typography">Typography</a>
+    <a class="sidebar-link" href="#spacing">Spacing</a>
+    <a class="sidebar-link" href="#radius">Border Radius</a>
+    <a class="sidebar-link" href="#shadows">Shadows</a>
+    <a class="sidebar-link" href="#motion">Motion</a>
+
+    <div class="sidebar-section-label">Components</div>
+    <a class="sidebar-link" href="#buttons">Buttons</a>
+    <a class="sidebar-link" href="#nav">Navigation</a>
+    <a class="sidebar-link" href="#project-card">Project Card</a>
+    <a class="sidebar-link" href="#icons">Icons</a>
+    <a class="sidebar-link" href="#links">Links</a>
+    <a class="sidebar-link" href="#view-all">View All Bar</a>
+
+    <div class="sidebar-section-label">Patterns</div>
+    <a class="sidebar-link" href="#hero">Hero Section</a>
+    <a class="sidebar-link" href="#layout">Layout Grid</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="page-eyebrow">Design System</div>
+      <h1 class="page-title">Evelyn Kuang</h1>
+      <p class="page-desc">A living reference for all visual decisions — color, type, spacing, components, and patterns — used across the portfolio site. Reference this doc when discussing changes.</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         FOUNDATIONS
+    ══════════════════════════════════════════════════════ -->
+
+    <!-- COLOR -->
+    <section class="ds-section" id="colors">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Color</h2>
+        <span class="ds-section-tag">Foundations</span>
+      </div>
+      <p class="ds-section-desc">A minimal palette anchored by electric blue as the sole accent. Grays provide hierarchy and structure.</p>
+      <div class="ds-divider"></div>
+
+      <div class="ds-sub">
+        <div class="ds-sub-label">Blue Scale 1–8</div>
+        <div style="display:grid; grid-template-columns:repeat(8,1fr); gap:6px; margin-bottom:16px;">
+          <div style="border-radius:6px; overflow:hidden; border:1px solid #E8E8E8;">
+            <div style="height:52px; background:#EBF0FF;"></div>
+            <div style="padding:7px 8px; background:#fff;">
+              <div style="font-size:11px; font-weight:700; color:#0A0A0A;">1</div>
+              <div style="font-family:'Courier New',monospace; font-size:9px; color:#ABABAB;">#EBF0FF</div>
+            </div>
+          </div>
+          <div style="border-radius:6px; overflow:hidden; border:1px solid #E8E8E8;">
+            <div style="height:52px; background:#C2D0FA;"></div>
+            <div style="padding:7px 8px; background:#fff;">
+              <div style="font-size:11px; font-weight:700; color:#0A0A0A;">2</div>
+              <div style="font-family:'Courier New',monospace; font-size:9px; color:#ABABAB;">#C2D0FA</div>
+            </div>
+          </div>
+          <div style="border-radius:6px; overflow:hidden; border:1px solid #E8E8E8;">
+            <div style="height:52px; background:#90AAF5;"></div>
+            <div style="padding:7px 8px; background:#fff;">
+              <div style="font-size:11px; font-weight:700; color:#0A0A0A;">3</div>
+              <div style="font-family:'Courier New',monospace; font-size:9px; color:#ABABAB;">#90AAF5</div>
+            </div>
+          </div>
+          <div style="border-radius:6px; overflow:hidden; border:1px solid #E8E8E8;">
+            <div style="height:52px; background:#4F79EE;"></div>
+            <div style="padding:7px 8px; background:#fff;">
+              <div style="font-size:11px; font-weight:700; color:#0A0A0A;">4</div>
+              <div style="font-family:'Courier New',monospace; font-size:9px; color:#ABABAB;">#4F79EE</div>
+            </div>
+          </div>
+          <div style="border-radius:6px; overflow:hidden; border:2px solid #0030DB;">
+            <div style="height:52px; background:#0030DB; position:relative;">
+              <span style="position:absolute;top:4px;right:5px;font-size:9px;font-weight:700;color:white;opacity:0.8;">DEFAULT</span>
+            </div>
+            <div style="padding:7px 8px; background:#fff;">
+              <div style="font-size:11px; font-weight:700; color:#0030DB;">5</div>
+              <div style="font-family:'Courier New',monospace; font-size:9px; color:#ABABAB;">#0030DB</div>
+            </div>
+          </div>
+          <div style="border-radius:6px; overflow:hidden; border:1px solid #E8E8E8;">
+            <div style="height:52px; background:#052BB8;"></div>
+            <div style="padding:7px 8px; background:#fff;">
+              <div style="font-size:11px; font-weight:700; color:#0A0A0A;">6</div>
+              <div style="font-family:'Courier New',monospace; font-size:9px; color:#ABABAB;">#052BB8</div>
+            </div>
+          </div>
+          <div style="border-radius:6px; overflow:hidden; border:2px solid #0A2EAE;">
+            <div style="height:52px; background:#0A2EAE; position:relative;">
+              <span style="position:absolute;top:4px;right:5px;font-size:9px;font-weight:700;color:white;opacity:0.8;">BTN</span>
+            </div>
+            <div style="padding:7px 8px; background:#fff;">
+              <div style="font-size:11px; font-weight:700; color:#0A2EAE;">7</div>
+              <div style="font-family:'Courier New',monospace; font-size:9px; color:#ABABAB;">#0A2EAE</div>
+            </div>
+          </div>
+          <div style="border-radius:6px; overflow:hidden; border:1px solid #E8E8E8;">
+            <div style="height:52px; background:#071B6A;"></div>
+            <div style="padding:7px 8px; background:#fff;">
+              <div style="font-size:11px; font-weight:700; color:#0A0A0A;">8</div>
+              <div style="font-family:'Courier New',monospace; font-size:9px; color:#ABABAB;">#071B6A</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:6px; font-size:12px; color:#444;">
+            <div style="width:12px;height:12px;border-radius:2px;border:2px solid #0030DB;"></div>
+            <strong>--blue (5)</strong> · Links, role tag, badges, ghost hover
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:12px; color:#444;">
+            <div style="width:12px;height:12px;border-radius:2px;border:2px solid #0A2EAE;"></div>
+            <strong>--blue-btn (7)</strong> · Primary button background
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:12px; color:#444;">
+            <div style="width:12px;height:12px;border-radius:2px;background:#071B6A;"></div>
+            <strong>--blue-8</strong> · Primary button hover
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <div class="ds-sub-label">Neutrals</div>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background:#0A0A0A;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Black</div>
+              <div class="swatch-hex">--black</div>
+              <div class="swatch-usage">#0A0A0A</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background:#FFFFFF; border-bottom:1px solid #E8E8E8;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">White</div>
+              <div class="swatch-hex">--white</div>
+              <div class="swatch-usage">#FFFFFF</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <div class="ds-sub-label">Gray Scale</div>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background:#FAFAFA;"></div>
+            <div class="swatch-info"><div class="swatch-name">Gray 50</div><div class="swatch-hex">--gray-50</div><div class="swatch-usage">Hover tints</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background:#F4F4F4;"></div>
+            <div class="swatch-info"><div class="swatch-name">Gray 100</div><div class="swatch-hex">--gray-100</div><div class="swatch-usage">Image fills</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background:#E8E8E8;"></div>
+            <div class="swatch-info"><div class="swatch-name">Gray 200</div><div class="swatch-hex">--gray-200</div><div class="swatch-usage">Borders, dividers</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background:#ABABAB;"></div>
+            <div class="swatch-info"><div class="swatch-name">Gray 400</div><div class="swatch-hex">--gray-400</div><div class="swatch-usage">Muted icons, labels</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background:#888888;"></div>
+            <div class="swatch-info"><div class="swatch-name">Gray 500</div><div class="swatch-hex">--gray-500</div><div class="swatch-usage">Nav links</div></div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-preview" style="background:#444444;"></div>
+            <div class="swatch-info"><div class="swatch-name">Gray 700</div><div class="swatch-hex">--gray-700</div><div class="swatch-usage">Body text</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section class="ds-section" id="typography">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Typography</h2>
+        <span class="ds-section-tag">Foundations</span>
+      </div>
+      <p class="ds-section-desc">A single typeface — Inter — used across all weights. Display sizes use tight tracking; body copy uses relaxed line height.</p>
+      <div class="ds-divider"></div>
+
+      <div class="ds-sub">
+        <div class="ds-sub-label">Typeface</div>
+        <div class="preview" style="display:flex; align-items:center; gap:24px;">
+          <span style="font-size:48px; font-weight:900; letter-spacing:-0.04em;">Aa</span>
+          <div>
+            <div style="font-size:18px; font-weight:700; margin-bottom:4px;">Inter</div>
+            <div style="font-size:13px; color:var(--gray-500);">Weights used: 400, 500, 600, 700, 800, 900</div>
+            <div style="font-size:13px; color:var(--gray-400); margin-top:2px; font-family:'Courier New',monospace;">--ff: 'Inter', sans-serif</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <div class="ds-sub-label">Type Scale</div>
+        <div class="type-row">
+          <div class="type-label">Display</div>
+          <div style="font-size:52px; font-weight:900; letter-spacing:-0.04em; line-height:1.0;">Evelyn Kuang</div>
+          <div class="type-meta">700 · clamp(52–88px) · -0.04em</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Heading 1</div>
+          <div style="font-size:32px; font-weight:800; letter-spacing:-0.02em;">Project Title</div>
+          <div class="type-meta">600 · 32px · -0.02em</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Heading 2</div>
+          <div style="font-size:22px; font-weight:800; letter-spacing:-0.02em;">Section Heading</div>
+          <div class="type-meta">600 · 22px · -0.02em</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Body Large</div>
+          <div style="font-size:15px; font-weight:400; line-height:1.75; color:var(--gray-700);">Designing digital products that feel effortless and intuitive.</div>
+          <div class="type-meta">400 · 15px · 1.75</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Body</div>
+          <div style="font-size:14px; font-weight:400; line-height:1.7; color:var(--gray-700);">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+          <div class="type-meta">400 · 14px · 1.7</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Body Small</div>
+          <div style="font-size:13px; font-weight:400; line-height:1.6; color:var(--gray-700);">Small supporting text and descriptions.</div>
+          <div class="type-meta">400 · 13px · 1.6</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Label / Tag</div>
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--gray-400);">Category — 2024</div>
+          <div class="type-meta">700 · 11px · 0.09em · uppercase</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Role Tag</div>
+          <div style="display:flex; align-items:center; gap:10px; font-size:12px; font-weight:700; letter-spacing:0.07em; color:var(--blue); text-transform:uppercase;"><span style="display:inline-block;width:18px;height:2px;background:var(--blue);border-radius:2px;flex-shrink:0;"></span>UX/UI Designer</div>
+          <div class="type-meta">700 · 12px · blue · dash prefix</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Inline Link</div>
+          <div style="font-size:14px;">Text with an <a class="inline-link" href="#">inline link</a> inside prose.</div>
+          <div class="type-meta">500 · blue · underline on hover</div>
+        </div>
+        <div class="type-row">
+          <div class="type-label">Nav Link</div>
+          <div style="font-size:13px; font-weight:500; color:var(--gray-500);">Work</div>
+          <div class="type-meta">500 · 13px · gray-500</div>
+        </div>
+        <div class="type-row" style="border-bottom:none;">
+          <div class="type-label">Button Label</div>
+          <div style="font-size:14px; font-weight:600;">View All Work</div>
+          <div class="type-meta">600 · 14px</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACING -->
+    <section class="ds-section" id="spacing">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Spacing</h2>
+        <span class="ds-section-tag">Foundations</span>
+      </div>
+      <p class="ds-section-desc">An 8-point base scale. All component padding and layout gaps derive from these steps.</p>
+      <div class="ds-divider"></div>
+
+      <div class="spacing-row" style="border-top:1px solid var(--gray-200);">
+        <div class="spacing-token">--space-1</div>
+        <div class="spacing-px">4px</div>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:4px;"></div></div>
+        <div class="spacing-use">Icon gaps, tight nudges</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">--space-2</div>
+        <div class="spacing-px">8px</div>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:8px;"></div></div>
+        <div class="spacing-use">Badge padding, button icon gap</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">--space-3</div>
+        <div class="spacing-px">12px</div>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:12px;"></div></div>
+        <div class="spacing-use">Button padding (vertical)</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">--space-4</div>
+        <div class="spacing-px">16px</div>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:16px;"></div></div>
+        <div class="spacing-use">Card body padding, nav internal</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">--space-5</div>
+        <div class="spacing-px">24px</div>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:24px;"></div></div>
+        <div class="spacing-use">Button padding (horizontal)</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">--space-6</div>
+        <div class="spacing-px">32px</div>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:32px;"></div></div>
+        <div class="spacing-use">Section internal padding</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">--space-7</div>
+        <div class="spacing-px">48px</div>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:48px;"></div></div>
+        <div class="spacing-use">Between elements in hero</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">--panel-pad</div>
+        <div class="spacing-px">40–80px</div>
+        <div class="spacing-bar-wrap"><div class="spacing-bar" style="width:60px;"></div></div>
+        <div class="spacing-use">Hero & project panel padding (fluid)</div>
+      </div>
+    </section>
+
+    <!-- BORDER RADIUS -->
+    <section class="ds-section" id="radius">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Border Radius</h2>
+        <span class="ds-section-tag">Foundations</span>
+      </div>
+      <p class="ds-section-desc">Sharp corners are the default. Radius is applied only to UI controls and containers — never to project cards.</p>
+      <div class="ds-divider"></div>
+
+      <div class="preview centered">
+        <div class="radius-item">
+          <div class="radius-box" style="border-radius:0;"></div>
+          <div class="radius-label">None</div>
+          <div class="radius-val">0px</div>
+        </div>
+        <div class="radius-item">
+          <div class="radius-box" style="border-radius:4px;"></div>
+          <div class="radius-label">Badge</div>
+          <div class="radius-val">4px</div>
+        </div>
+        <div class="radius-item">
+          <div class="radius-box" style="border-radius:6px;"></div>
+          <div class="radius-label">Button</div>
+          <div class="radius-val">6px</div>
+        </div>
+        <div class="radius-item">
+          <div class="radius-box" style="border-radius:8px;"></div>
+          <div class="radius-label">Container</div>
+          <div class="radius-val">8–10px</div>
+        </div>
+        <div class="radius-item">
+          <div class="radius-box" style="border-radius:9999px;"></div>
+          <div class="radius-label">Pill</div>
+          <div class="radius-val">9999px</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHADOWS -->
+    <section class="ds-section" id="shadows">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Shadows</h2>
+        <span class="ds-section-tag">Foundations</span>
+      </div>
+      <p class="ds-section-desc">Shadows are used sparingly and only to signal elevation on hover states. The resting state is always flat.</p>
+      <div class="ds-divider"></div>
+
+      <div class="preview centered" style="gap:40px;">
+        <div class="shadow-item">
+          <div class="shadow-box" style="box-shadow:none; border:1px solid var(--gray-200);"></div>
+          <div class="shadow-label">None (rest)</div>
+        </div>
+        <div class="shadow-item">
+          <div class="shadow-box" style="box-shadow:0 4px 16px rgba(0,0,0,0.06);"></div>
+          <div class="shadow-label">Sm (hover)</div>
+        </div>
+        <div class="shadow-item">
+          <div class="shadow-box" style="box-shadow:0 12px 40px rgba(0,0,0,0.08);"></div>
+          <div class="shadow-label">Md (card hover)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOTION -->
+    <section class="ds-section" id="motion">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Motion</h2>
+        <span class="ds-section-tag">Foundations</span>
+      </div>
+      <p class="ds-section-desc">All animations use a custom ease-out curve for a natural, snappy feel. Page entrance uses staggered fade-up delays.</p>
+      <div class="ds-divider"></div>
+
+      <div class="ds-sub">
+        <div class="ds-sub-label">Easing</div>
+        <div class="spec-row">
+          <div>Ease Out</div>
+          <div class="spec-val">--ease-out</div>
+          <div class="spec-val">cubic-bezier(0.22, 1, 0.36, 1)</div>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <div class="ds-sub-label">Durations</div>
+        <div class="spec-row">
+          <div>Fast</div>
+          <div class="spec-val">0.15s</div>
+          <div>Hover states (color, transform)</div>
+        </div>
+        <div class="spec-row">
+          <div>Default</div>
+          <div class="spec-val">0.2s</div>
+          <div>Button backgrounds, nav transitions</div>
+        </div>
+        <div class="spec-row">
+          <div>Entrance</div>
+          <div class="spec-val">0.6–0.7s</div>
+          <div>Page load fade-up animations</div>
+        </div>
+        <div class="spec-row">
+          <div>Image scale</div>
+          <div class="spec-val">0.4s</div>
+          <div>Card image hover scale</div>
+        </div>
+      </div>
+
+      <div class="ds-sub">
+        <div class="ds-sub-label">Entrance Stagger</div>
+        <div class="spec-row">
+          <div>@keyframes</div>
+          <div class="spec-val">fade-up</div>
+          <div>opacity 0→1, translateY 20px→0</div>
+        </div>
+        <div class="spec-row">
+          <div>Stagger step</div>
+          <div class="spec-val">calc(base + i × delay)</div>
+          <div>Each element delayed by index</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         COMPONENTS
+    ══════════════════════════════════════════════════════ -->
+
+    <!-- BUTTONS -->
+    <section class="ds-section" id="buttons">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Buttons</h2>
+        <span class="ds-section-tag">Components</span>
+      </div>
+      <p class="ds-section-desc">Three button variants. Primary is the main CTA; outline is secondary; ghost is for inline text-level actions.</p>
+      <div class="ds-divider"></div>
+
+      <div class="ds-sub">
+        <div class="ds-sub-label">Primary</div>
+        <div class="preview centered">
+          <button class="btn-primary">View All Work</button>
+        </div>
+        <div class="spec-row"><div>Background</div><div class="spec-val">--blue-btn (#0A2EAE)</div><div>Hover: --blue-8 (#071B6A)</div></div>
+        <div class="spec-row"><div>Text</div><div class="spec-val">--white, 600, 14px</div><div>—</div></div>
+        <div class="spec-row"><div>Padding</div><div class="spec-val">13px 26px</div><div>—</div></div>
+        <div class="spec-row"><div>Radius</div><div class="spec-val">6px</div><div>—</div></div>
+        <div class="spec-row"><div>Hover</div><div class="spec-val">translateY(-1px)</div><div>0.15s ease-out</div></div>
+      </div>
+
+      <div class="ds-sub">
+        <div class="ds-sub-label">Outline</div>
+        <div class="preview centered">
+          <button class="btn-outline">View Resume</button>
+        </div>
+        <div class="spec-row"><div>Background</div><div class="spec-val">transparent</div><div>Hover: --gray-50</div></div>
+        <div class="spec-row"><div>Border</div><div class="spec-val">1.5px --gray-200</div><div>Hover: --black</div></div>
+        <div class="spec-row"><div>Text</div><div class="spec-val">--black, 600, 14px</div><div>—</div></div>
+        <div class="spec-row"><div>Padding</div><div class="spec-val">12px 24px</div><div>—</div></div>
+      </div>
+
+      <div class="ds-sub">
+        <div class="ds-sub-label">Ghost / Link</div>
+        <div class="preview centered">
+          <button class="btn-ghost">
+            View Case Study
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+        <div class="spec-row"><div>Color</div><div class="spec-val">--blue, 600, 13px</div><div>Hover bg: --blue-10</div></div>
+        <div class="spec-row"><div>Arrow gap</div><div class="spec-val">gap: 6 → 10px on hover</div><div>0.2s transition</div></div>
+      </div>
+    </section>
+
+    <!-- NAV -->
+    <section class="ds-section" id="nav">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Navigation</h2>
+        <span class="ds-section-tag">Components</span>
+      </div>
+      <p class="ds-section-desc">Fixed top bar with frosted glass background. Logo on left, links centered, CTA on right.</p>
+      <div class="ds-divider"></div>
+
+      <div class="preview" style="padding:16px;">
+        <div class="nav-demo">
+          <div class="nav-demo-logo">EK</div>
+          <ul class="nav-demo-links">
+            <li><a href="#">Work</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <div class="nav-demo-cta">View Resume</div>
+        </div>
+      </div>
+
+      <div class="spec-row"><div>Height</div><div class="spec-val">--nav-h: 64px</div><div>—</div></div>
+      <div class="spec-row"><div>Background</div><div class="spec-val">rgba(255,255,255,0.88)</div><div>backdrop-filter: blur(12px)</div></div>
+      <div class="spec-row"><div>Border</div><div class="spec-val">1px --gray-200 bottom</div><div>—</div></div>
+      <div class="spec-row"><div>Logo</div><div class="spec-val">800, 15px, -0.02em</div><div>Hover: --blue</div></div>
+      <div class="spec-row"><div>Links</div><div class="spec-val">500, 13px, --gray-500</div><div>Hover: --black</div></div>
+      <div class="spec-row"><div>CTA</div><div class="spec-val">600, 13px, border 1.5px</div><div>Hover: inverts to black fill</div></div>
+    </section>
+
+    <!-- PROJECT CARD -->
+    <section class="ds-section" id="project-card">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Project Card</h2>
+        <span class="ds-section-tag">Components</span>
+      </div>
+      <p class="ds-section-desc">Flush, full-width cards stacked with only a divider between them. No border-radius, no box shadow at rest.</p>
+      <div class="ds-divider"></div>
+
+      <div class="preview" style="padding:0; overflow:hidden;">
+        <div class="card-demo">
+          <div class="card-demo-img">
+            <span class="card-demo-tag">Case Study</span>
+          </div>
+          <div class="card-demo-body">
+            <div class="card-demo-meta">Branding &amp; Strategy — 2024</div>
+            <div class="card-demo-title">Project 1</div>
+            <div class="card-demo-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Done pretium <a href="#" class="inline-link">metus quis consequat</a> molestie.</div>
+            <div class="card-demo-link">View Case Study <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-row"><div>Background</div><div class="spec-val">--white</div><div>Hover: --gray-50</div></div>
+      <div class="spec-row"><div>Border</div><div class="spec-val">none</div><div>border-bottom: 1px --gray-200</div></div>
+      <div class="spec-row"><div>Border Radius</div><div class="spec-val">0</div><div>Flush against panel edges</div></div>
+      <div class="spec-row"><div>Image</div><div class="spec-val">aspect-ratio: 16/9</div><div>Hover: scale(1.02), 0.4s</div></div>
+      <div class="spec-row"><div>Body padding</div><div class="spec-val">20px --panel-pad 24px</div><div>Matches panel padding</div></div>
+      <div class="spec-row"><div>Meta label</div><div class="spec-val">700, 11px, uppercase, --gray-400</div><div>—</div></div>
+      <div class="spec-row"><div>Title</div><div class="spec-val">800, 20px, -0.02em</div><div>—</div></div>
+    </section>
+
+    <!-- ICONS -->
+    <section class="ds-section" id="icons">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Icons</h2>
+        <span class="ds-section-tag">Components</span>
+      </div>
+      <p class="ds-section-desc">18×18px stroke icons at 1.5 stroke width. Used in the contact bar. Rest state is gray-400; hover becomes blue.</p>
+      <div class="ds-divider"></div>
+
+      <div class="preview centered">
+        <div class="icon-row">
+          <div class="icon-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3,5 12,13 21,5"/></svg>
+            <span>email</span>
+          </div>
+          <div class="icon-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>chat</span>
+          </div>
+          <div class="icon-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span>portfolio</span>
+          </div>
+          <div class="icon-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            <span>coffee</span>
+          </div>
+          <div class="icon-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>phone</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-row"><div>Size</div><div class="spec-val">18×18px (20 render)</div><div>stroke-width: 1.6</div></div>
+      <div class="spec-row"><div>Rest color</div><div class="spec-val">--gray-400</div><div>Hover: --blue</div></div>
+      <div class="spec-row"><div>Hover</div><div class="spec-val">translateY(-2px)</div><div>0.15s ease-out</div></div>
+      <div class="spec-row"><div>Gap</div><div class="spec-val">20px between icons</div><div>—</div></div>
+    </section>
+
+    <!-- LINKS -->
+    <section class="ds-section" id="links">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Links</h2>
+        <span class="ds-section-tag">Components</span>
+      </div>
+      <p class="ds-section-desc">Inline links appear inside body copy in blue. A sliding underline appears on hover.</p>
+      <div class="ds-divider"></div>
+
+      <div class="preview">
+        <p style="font-size:15px; line-height:1.75; color:var(--gray-700);">
+          Currently focused on <a href="#" class="inline-link">interaction design</a> and scalable <a href="#" class="inline-link">design systems</a> for early-stage startups.
+        </p>
+      </div>
+
+      <div class="spec-row"><div>Color</div><div class="spec-val">--blue</div><div>font-weight: 500</div></div>
+      <div class="spec-row"><div>Underline</div><div class="spec-val">::after pseudo-element</div><div>width: 0 → 100%, 0.25s</div></div>
+      <div class="spec-row"><div>No default underline</div><div class="spec-val">text-decoration: none</div><div>—</div></div>
+    </section>
+
+    <!-- VIEW ALL BAR -->
+    <section class="ds-section" id="view-all">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">View All Bar</h2>
+        <span class="ds-section-tag">Components</span>
+      </div>
+      <p class="ds-section-desc">A full-width footer row beneath the project cards. Sits flush with the card edges.</p>
+      <div class="ds-divider"></div>
+
+      <div class="preview" style="padding:0; overflow:hidden;">
+        <div class="view-all-demo">
+          <span>View All Projects</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="spec-row"><div>Font</div><div class="spec-val">600, 14px</div><div>—</div></div>
+      <div class="spec-row"><div>Padding</div><div class="spec-val">20px --panel-pad</div><div>Matches card body</div></div>
+      <div class="spec-row"><div>Border</div><div class="spec-val">1px --gray-200 top</div><div>—</div></div>
+      <div class="spec-row"><div>Hover</div><div class="spec-val">color: --blue, bg: --gray-50</div><div>Arrow: translateX(4px)</div></div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         PATTERNS
+    ══════════════════════════════════════════════════════ -->
+
+    <!-- HERO PATTERN -->
+    <section class="ds-section" id="hero">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Hero Section</h2>
+        <span class="ds-section-tag">Patterns</span>
+      </div>
+      <p class="ds-section-desc">The full left-panel hero assembled from all tokens. Elements animate in sequentially on page load.</p>
+      <div class="ds-divider"></div>
+
+      <div class="preview" style="padding:0; overflow:hidden;">
+        <div class="hero-demo">
+          <div class="hero-demo-role"><span class="role-dash"></span> UX/UI Designer</div>
+          <div class="hero-demo-name">Evelyn<br>Kuang</div>
+          <div class="hero-demo-sub">Based in Vancouver, CA</div>
+          <div class="hero-demo-body">
+            Designing digital products that feel effortless. Currently focused on
+            <a href="#" class="inline-link">interaction design</a> and scalable design systems.
+          </div>
+          <div class="hero-demo-actions">
+            <button class="btn-primary">View All Work</button>
+            <button class="btn-outline">View Resume</button>
+          </div>
+          <div class="hero-demo-icons">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3,5 12,13 21,5"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-row"><div>Entrance order</div><div class="spec-val">Role → Name → Sub → Body → Buttons → Icons</div><div>Staggered 0.1s each</div></div>
+      <div class="spec-row"><div>Position</div><div class="spec-val">sticky, top: --nav-h</div><div>height: calc(100vh - nav)</div></div>
+      <div class="spec-row"><div>Padding</div><div class="spec-val">--panel-pad (fluid)</div><div>—</div></div>
+    </section>
+
+    <!-- LAYOUT -->
+    <section class="ds-section" id="layout">
+      <div class="ds-section-header">
+        <h2 class="ds-section-title">Layout Grid</h2>
+        <span class="ds-section-tag">Patterns</span>
+      </div>
+      <p class="ds-section-desc">A two-column split that divides the viewport exactly in half. Left panel is sticky; right scrolls independently.</p>
+      <div class="ds-divider"></div>
+
+      <div class="preview" style="padding:16px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; height:160px;">
+          <div style="background:var(--gray-100); border-radius:6px; border:1px dashed var(--gray-300); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:6px;">
+            <div style="font-size:11px; font-weight:700; color:var(--gray-400); text-transform:uppercase; letter-spacing:0.08em;">Hero Panel</div>
+            <div style="font-size:10px; color:var(--gray-400);">position: sticky</div>
+          </div>
+          <div style="background:var(--gray-100); border-radius:6px; border:1px dashed var(--gray-300); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:6px;">
+            <div style="font-size:11px; font-weight:700; color:var(--gray-400); text-transform:uppercase; letter-spacing:0.08em;">Projects Panel</div>
+            <div style="font-size:10px; color:var(--gray-400);">overflow: scroll</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-row"><div>Grid</div><div class="spec-val">grid-template-columns: 1fr 1fr</div><div>50/50 split</div></div>
+      <div class="spec-row"><div>Left panel</div><div class="spec-val">position: sticky</div><div>height: calc(100vh - nav-h)</div></div>
+      <div class="spec-row"><div>Right panel</div><div class="spec-val">min-height: calc(100vh - nav-h)</div><div>Scrolls with page</div></div>
+      <div class="spec-row"><div>Divider</div><div class="spec-val">border-right: 1px --gray-200</div><div>On left (hero) panel</div></div>
+      <div class="spec-row"><div>Breakpoint</div><div class="spec-val">max-width: 900px</div><div>Collapses to single column</div></div>
+    </section>
+
+  </main>
+
+  <script>
+    // Scrollspy — highlight active sidebar link
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('.ds-section, .page-header');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          links.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.sidebar-link[href="#${id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    sections.forEach(s => s.id && observer.observe(s));
+  </script>
+
+</body>
+</html>
