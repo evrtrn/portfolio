@@ -98,9 +98,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+body.page--home {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
 }
 
 a {
@@ -216,12 +220,12 @@ button {
   padding-top: var(--nav-height);
 }
 
-#main-content {
+body.page--home #main-content {
   flex: 1;
   overflow: hidden;
 }
 
-.projects-panel {
+body.page--home .projects-panel {
   overflow-y: auto;
 }
 
