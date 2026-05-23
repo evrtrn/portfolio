@@ -64,7 +64,7 @@
 
       <p class="cs-eyebrow">
         <span class="cs-eyebrow__dash" aria-hidden="true"></span>
-        Branding &amp; Strategy
+        Enterprise UX Systems
       </p>
 
       <h1 class="cs-title">
@@ -72,7 +72,7 @@
       </h1>
 
       <p class="cs-summary">
-        How do we evolve a 2010-era application into a product that respects existing workflows while adapting to today’s technology landscape? 
+        How do we evolve a 2010-era application into a product that respects existing workflows while adapting to today's technology landscape? 
       </p>
 
       <!-- Meta strip -->
@@ -131,6 +131,9 @@
               organization meets regulatory requirements and can respond
               to audits without friction.
             </p>
+            <p class="cs-block__body">
+              The core building blocks are <strong>objects</strong>: reusable risk detection components — covering areas like keyword usage and preapproved content — that policies draw on to evaluate communications.
+            </p>
           </div>
 
           <!-- Personas -->
@@ -163,60 +166,92 @@
 
         <div class="cs-phase__content">
 
+          <!-- Before state -->
+          <div class="reveal">
+            <p class="cs-block__eyebrow">The Problem</p>
+            <h3 class="cs-block__heading">An experience that never evolved</h3>
+            <p class="cs-block__body">
+              A compliance administrator's work requires the whole application. Establishing the right
+              surveillance setup meant moving across multiple object types. Instead of navigating
+              a product, users were hopping from one experience to another — relearning behaviours and
+              workflows for every task.
+            </p>
+            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Two object types side by side — inconsistent layouts, patterns, and content placement">
+              <!-- <img src="assets/images/project1-before-comparison.jpg" alt="Two object types, same product — inconsistent layouts, patterns, and content placement" /> -->
+            </div>
+            <p class="cs-image-caption">Two object types, same product — inconsistent layouts, patterns, and content placement</p>
+          </div>
+
+          <div class="cs-insight reveal">
+            <p>"There is never a clear way to do one thing."</p>
+            <p class="cs-insight__attribution" style="font-size: 11px; font-weight: 400; opacity: 0.45; margin-top: 8px; letter-spacing: 0.03em;">Customer — end-to-end satisfaction survey</p>
+          </div>
+
+          <div class="reveal">
+            <dl class="cs-stats" aria-label="End-to-end satisfaction survey results" style="grid-template-columns: repeat(2, 1fr);">
+              <div class="cs-stat">
+                <dt class="cs-stat__label" style="order:2;">of 47 participants reported the platform was missing at least some features</dt>
+                <dd class="cs-stat__value" style="order:1;">89%</dd>
+              </div>
+              <div class="cs-stat">
+                <dt class="cs-stat__label" style="order:2;">identified gaps in existing features that directly impacted their usefulness</dt>
+                <dd class="cs-stat__value" style="order:1;">24</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="cs-insight reveal">
+            <p>"Certain functionalities are difficult to use and some lead to multiple results, which decreases efficiency."</p>
+            <p class="cs-insight__attribution" style="font-size: 11px; font-weight: 400; opacity: 0.45; margin-top: 8px; letter-spacing: 0.03em;">Customer — end-to-end satisfaction survey</p>
+          </div>
+
           <!-- What we were designing -->
           <div class="reveal">
             <p class="cs-block__eyebrow">Scope</p>
             <h3 class="cs-block__heading">What we were designing</h3>
             <p class="cs-block__body">
-              The core building blocks are <strong>objects</strong>: reusable risk
-              detection components that policies draw on to evaluate content,
-              covering areas like lexicon usage and preapproved content.
+              Compliance administrators follow a consistent pattern — two primary tasks and a set of 
+              secondary tasks recur across every object type. The goal was to design for that pattern, 
+              but the brief needed reframing.
             </p>
-            <p class="cs-block__body">
-              The tasks compliance administrators perform follow a consistent pattern. 
-              Two primary tasks and a set of secondary tasks recur across every object type.
-            </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Diagram illustrating the relationship between objects and policies">
-              <!-- <img src="assets/images/project1-objects-diagram.jpg" alt="Diagram showing how objects feed into policies" /> -->
-            </div>
-            <p class="cs-image-caption">Objects → policies: how risk detection components relate to compliance workflows</p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Diagram illustrating the relationship between objects and policies">
-              <!-- <img src="assets/images/project1-objects-diagram.jpg" alt="Diagram showing how objects feed into policies" /> -->
-            </div>
-            <p class="cs-image-caption">Objects → policies: how risk detection components relate to compliance workflows</p>
           </div>
 
-          <!-- Reframing -->
+          <!-- Reframing the Brief -->
           <div class="reveal">
             <p class="cs-block__eyebrow">Reframing the Brief</p>
             <h3 class="cs-block__heading">From visual refresh to defined user need</h3>
             <p class="cs-block__body">
-              The initial framing was a simple visual refresh. I shifted the conversation toward a defined
-              user need: <strong>reduce the mental friction compliance administrators
-              experience when navigating between topics</strong>, and give them a
-              consistent, predictable experience that doesn't require
-              relearning the product each time.
+              The initial framing was a simple refresh. I shifted the conversation toward a defined user 
+              need: reduce the mental friction compliance administrators experience when navigating between objects.
             </p>
+            <p class="cs-block__body">
+              Expected outcomes were a reusable template, development-ready designs for Keyword Lists, 
+              and full workflows adoptable by designers and engineers across the product.
+            </p>
+            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Expected outcomes — reusable template, Keyword Lists designs, and system workflows">
+              <!-- <img src="assets/images/project1-expected-outcomes.jpg" alt="Expected outcomes — reusable template, Keyword Lists designs, and system workflows" /> -->
+            </div>
+            <p class="cs-image-caption">Expected outcomes — reusable template, Keyword Lists designs, and system workflows</p>
           </div>
 
-          <!-- Insight -->
-          <div class="cs-insight reveal">
-            <p>"Calling it a visual refresh kept the discussion at the surface level. By defining the underlying user need, I turned it into a problem stakeholders could understand, prioritize, and invest in."</p>
-          </div>
-
-          <!-- Final brief -->
+          <!-- Constraints and Tradeoffs -->
           <div class="reveal">
-            <p class="cs-block__eyebrow">Final Brief</p>
-            <h3 class="cs-block__heading">What we aligned on</h3>
-            <p class="cs-block__body">
-              The goal was to establish a coherent, system-level approach to build the infrastructure that would let the product improve holistically over time.
-            </p>
-            <p class="cs-block__body">
-              The expected outcomes were a reusable template
-              addressing common object tasks, development-ready designs for
-              creating and modifying Keyword Lists, and full workflows adoptable
-              by both designers and engineers.
-            </p>
+            <p class="cs-block__eyebrow">Constraints &amp; Tradeoffs</p>
+            <h3 class="cs-block__heading">What we were working within</h3>
+            <ul class="cs-list" aria-label="Project constraints and tradeoffs">
+              <li class="cs-list__item">
+                <span class="cs-list__dot" aria-hidden="true"></span>
+                <p>The design system was still maturing. Strict timelines required designing with existing components. Modern patterns were deprioritised in favour of solutions that could ship.</p>
+              </li>
+              <li class="cs-list__item">
+                <span class="cs-list__dot" aria-hidden="true"></span>
+                <p>Early feedback from other designers found the template restrictive. The template was made open-ended. Additional design work was done outside of scope to demonstrate what flexibility looked like in practice.</p>
+              </li>
+              <li class="cs-list__item">
+                <span class="cs-list__dot" aria-hidden="true"></span>
+                <p>Backend limitations put known user needs on hold. Gaps were documented and deferred to future initiatives.</p>
+              </li>
+            </ul>
           </div>
 
         </div>
@@ -248,6 +283,10 @@
           <div class="reveal">
             <p class="cs-block__eyebrow">Stage 01 — Abstraction</p>
             <h3 class="cs-block__heading">Finding the structure beneath the surface</h3>
+            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Diagram illustrating the relationship between objects and policies">
+              <!-- <img src="assets/images/project1-objects-diagram.jpg" alt="Diagram showing how objects feed into policies" /> -->
+            </div>
+            <p class="cs-image-caption">Objects → policies: how risk detection components relate to compliance workflows</p>
             <p class="cs-block__body">
               A content audit resulted
               in a clear content structure that could serve as a shared
@@ -276,32 +315,73 @@
             <p class="cs-block__eyebrow">Stage 02 — Application</p>
             <h3 class="cs-block__heading">Testing the system with Keyword Lists</h3>
             <p class="cs-block__body">
-              To move on from abstraction and design real-world applications, we started 
-              with Keyword Lists. This gave us specific content and user journeys to start 
-              applying to the structure we defined earlier.
+              To move from abstraction to real-world application, we started with Keyword Lists — 
+              giving us specific content and user journeys to apply to the structure defined earlier.
             </p>
+          </div>
+
+          <!-- Header -->
+          <div class="reveal">
             <p class="cs-block__body">
-              The work here saw the emergence of the Side Panel as a key element to house 
-              additional details that support the main workflows.
+              The existing header had accumulated content over time — description, status, modified date, 
+              policy count, and additional controls — with no clear hierarchy or consistency across object 
+              types. This created noise at exactly the point users needed focus: creating and refining the object.
             </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Content audit and emerging template structure">
-              <!-- <img src="assets/images/project1-abstraction.jpg" alt="Content audit results and template structure" /> -->
+            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Header before simplification">
+              <!-- <img src="assets/images/project1-header-before.jpg" alt="Header before simplification" /> -->
             </div>
-            <p class="cs-image-caption">Secondary Tasks put together // display side panel variations </p>
+            <p class="cs-image-caption">Header — before simplification</p>
+            <p class="cs-block__body">Simplifying the header addressed three problems directly:</p>
+            <ul class="cs-list" aria-label="Header problems addressed">
+              <li class="cs-list__item">
+                <span class="cs-list__dot" aria-hidden="true"></span>
+                <p>Inconsistency across object types</p>
+              </li>
+              <li class="cs-list__item">
+                <span class="cs-list__dot" aria-hidden="true"></span>
+                <p>Content that competed for user attention</p>
+              </li>
+              <li class="cs-list__item">
+                <span class="cs-list__dot" aria-hidden="true"></span>
+                <p>Lack of separation between secondary information and primary actions</p>
+              </li>
+            </ul>
+            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Header after simplification">
+              <!-- <img src="assets/images/project1-header-after.jpg" alt="Simplified header pattern with clear separation of information and actions" /> -->
+            </div>
+            <p class="cs-image-caption">Header — simplified pattern with clear separation of information and actions</p>
+          </div>
+
+          <!-- Side Panel -->
+          <div class="reveal">
             <p class="cs-block__body">
-              This also helped clear out extra content around the header and reduced the amount of noise, allowing the user to focus on their main tasks, refining the Keyword List.
+              The information removed from the header still needed to be accessible. Customer interviews 
+              and SME sessions confirmed users wouldn't always need it, but relied on it to make decisions.
             </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Content audit and emerging template structure">
-              <!-- <img src="assets/images/project1-abstraction.jpg" alt="Content audit results and template structure" /> -->
+            <p class="cs-block__body">Two alternatives were explored:</p>
+            <ul class="cs-list" aria-label="Side panel alternatives explored">
+              <li class="cs-list__item">
+                <span class="cs-list__dot" aria-hidden="true"></span>
+                <p>An expandable accordion below the page title — kept content in view, but pushed the main workflow further down</p>
+              </li>
+              <li class="cs-list__item">
+                <span class="cs-list__dot" aria-hidden="true"></span>
+                <p>A dedicated secondary page — relocated the problem rather than solving it</p>
+              </li>
+            </ul>
+            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Side panel explorations — accordion and secondary page approaches">
+              <!-- <img src="assets/images/project1-sidepanel-explorations.jpg" alt="Explorations — accordion and secondary page approaches" /> -->
             </div>
-            <p class="cs-image-caption">Simplified header // annotated designs of the header pattern</p>
+            <p class="cs-image-caption">Explorations — accordion and secondary page approaches</p>
             <p class="cs-block__body">
-              User Activity started to take a new form. While still identifying itself as the Change Log, a timeline made sense to lay out linear frames. This introduced a reimagination of access points, interactions, and supporting visibility.
+              The Side Panel keeps secondary content present without competing for attention. A content 
+              audit across all object types defined what the panel would consistently hold, making it 
+              predictable across the product — users learn the pattern once and carry it forward.
             </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Content audit and emerging template structure">
-              <!-- <img src="assets/images/project1-abstraction.jpg" alt="Content audit results and template structure" /> -->
+            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Side panel — secondary content present without competing for attention">
+              <!-- <img src="assets/images/project1-sidepanel-final.jpg" alt="Side Panel — secondary content present without competing for attention" /> -->
             </div>
-            <p class="cs-image-caption">Same outcomes, new workflows // wireframes mapping out the new change log interactions</p>
+            <p class="cs-image-caption">Side Panel — secondary content present without competing for attention</p>
           </div>
 
           <!-- Refinement -->
@@ -309,24 +389,32 @@
             <p class="cs-block__eyebrow">Stage 03 — Refinement</p>
             <h3 class="cs-block__heading">What the application revealed</h3>
             <p class="cs-block__body">
-             TBD
+              Because content was mapped across all object types early, few structural adjustments were 
+              needed when the template was applied more broadly — the POC confirmed the system held.
             </p>
-          </div>
-
-          <!-- Exploration imagery -->
-          <div class="reveal">
-            <div class="cs-image-grid--3" style="margin-top: 8px;">
-              <div class="cs-image cs-image--square" role="img" aria-label="Template structure">
-                <!-- <img src="assets/images/project1-template.jpg" alt="Reusable template structure" /> -->
-              </div>
-              <div class="cs-image cs-image--square" role="img" aria-label="Keyword Lists workflow">
-                <!-- <img src="assets/images/project1-kwl-flow.jpg" alt="Keyword Lists full workflow" /> -->
-              </div>
-              <div class="cs-image cs-image--square" role="img" aria-label="Design system components">
-                <!-- <img src="assets/images/project1-ds-components.jpg" alt="New design system components" /> -->
-              </div>
+            <p class="cs-block__body">
+              Edge cases emerged where a single-page, single-workflow structure wasn't enough. Objects 
+              like Preapproved Content required tabs to support multiple workflows and a more flexible 
+              layout system to group content effectively.
+            </p>
+            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Keyword Lists vs Preapproved Content — template flexibility">
+              <!-- <img src="assets/images/project1-template-flexibility.jpg" alt="Keyword Lists (single workflow) vs Preapproved Content (tabbed, multi-card layout)" /> -->
             </div>
-            <p class="cs-image-caption">Template, Keyword Lists workflow, and design system components</p>
+            <p class="cs-image-caption">Keyword Lists vs. Preapproved Content — template flexibility</p>
+            <p class="cs-block__body">
+              Applying the template also challenged some inherited assumptions. AI Surveillance displayed 
+              subcategories and indicators as a table — but the content was purely informational with no 
+              actions. Redesigning it as readable content made the page significantly easier to scan.
+            </p>
+            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="AI Surveillance — informational content redesigned for readability">
+              <!-- <img src="assets/images/project1-ai-surveillance.jpg" alt="AI Surveillance — informational content redesigned for readability" /> -->
+            </div>
+            <p class="cs-image-caption">AI Surveillance — informational content redesigned for readability</p>
+            <p class="cs-block__body">
+              Some workflows were intentionally left out of scope. Policy creation and review queue 
+              management involved distinct user goals, case management complexity, and multi-step decision 
+              flows — each warranting a dedicated design review rather than an adaptation of this template.
+            </p>
           </div>
 
         </div>
@@ -395,20 +483,7 @@
           <div class="reveal">
             <p class="cs-block__eyebrow">Results</p>
             <h3 class="cs-block__heading">What changed after launch</h3>
-            <dl class="cs-stats" aria-label="Post-launch results">
-              <div class="cs-stat">
-                <dt class="cs-stat__label" style="order:2;">onboarding completion rate within 30 days of launch</dt>
-                <dd class="cs-stat__value" style="order:1;">↑ 41%</dd>
-              </div>
-              <div class="cs-stat">
-                <dt class="cs-stat__label" style="order:2;">reduction in support tickets related to the send flow</dt>
-                <dd class="cs-stat__value" style="order:1;">↓ 58%</dd>
-              </div>
-              <div class="cs-stat">
-                <dt class="cs-stat__label" style="order:2;">App Store rating, up from 3.9 pre-redesign</dt>
-                <dd class="cs-stat__value" style="order:1;">4.7★</dd>
-              </div>
-            </dl>
+            <!-- TBD: replace with qualitative outcomes or any available post-launch data -->
           </div>
 
           <!-- Reflection -->
