@@ -753,7 +753,7 @@ body.page--home .projects-panel {
 /* Stats */
 .cs-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background-color: var(--color-gray-200);
   border: 1px solid var(--color-gray-200);
@@ -790,6 +790,15 @@ body.page--home .projects-panel {
   font-style: italic;
   line-height: 1.6;
   color: var(--color-black);
+}
+.cs-insight__attribution {
+  font-size: 11px;
+  font-weight: var(--weight-regular);
+  font-style: normal;
+  color: var(--color-gray-400);
+  letter-spacing: 0.03em;
+  margin-top: var(--space-2);
+  opacity: 0.7;
 }
 
 /* Bullet list */
@@ -947,6 +956,27 @@ body.page--home .projects-panel {
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .hero__role,
+  .hero__name-line,
+  .hero__location,
+  .hero__body,
+  .hero__actions,
+  .hero__contact,
+  .cs-eyebrow,
+  .cs-title,
+  .cs-summary,
+  .cs-meta,
+  .cs-hero-image,
+  .project-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Applied by script.js IntersectionObserver */
