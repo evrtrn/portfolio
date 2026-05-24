@@ -60,7 +60,7 @@
   <main id="main-content" class="page">
 
     <!-- ── HERO ── -->
-    <header class="cs-hero container" aria-label="Case study introduction">
+    <section class="cs-hero container" aria-label="Case study introduction">
 
       <p class="cs-eyebrow">
         <span class="cs-eyebrow__dash" aria-hidden="true"></span>
@@ -98,7 +98,7 @@
           <dd class="cs-meta__value">Web</dd>
         </div>
       </dl>
-    </header>
+    </section>
 
     <!-- Full-bleed hero image -->
     <div class="cs-hero-image" role="img" aria-label="Project 1 hero image">
@@ -140,13 +140,9 @@
           <div class="reveal">
             <p class="cs-block__eyebrow">Who Uses It</p>
             <h3 class="cs-block__heading">Primary persona</h3>
-            <div class="cs-image-grid" style="margin-top: 20px;">
-              <div class="cs-image cs-image--4-3" role="img" aria-label="Persona — Compliance Administrator">
-                <!-- <img src="assets/images/persona-compliance-admin.jpg" alt="Compliance Administrator persona" /> -->
-              </div>
-              <div class="cs-image cs-image--4-3" role="img" aria-label="Persona — placeholder">
-                <!-- <img src="assets/images/persona-2.jpg" alt="Secondary persona" /> -->
-              </div>
+            <div class="cs-image-grid">
+              <div class="cs-image cs-image--4-3" role="img" aria-hidden="true" aria-label="Persona — Compliance Administrator"></div>
+              <div class="cs-image cs-image--4-3" role="img" aria-hidden="true" aria-label="Persona — placeholder"></div>
             </div>
             <p class="cs-image-caption">Primary persona — Compliance Administrator</p>
           </div>
@@ -176,33 +172,31 @@
               a product, users were hopping from one experience to another — relearning behaviours and
               workflows for every task.
             </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Two object types side by side — inconsistent layouts, patterns, and content placement">
-              <!-- <img src="assets/images/project1-before-comparison.jpg" alt="Two object types, same product — inconsistent layouts, patterns, and content placement" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="Two object types side by side — inconsistent layouts, patterns, and content placement"></div>
             <p class="cs-image-caption">Two object types, same product — inconsistent layouts, patterns, and content placement</p>
           </div>
 
           <div class="cs-insight reveal">
             <p>"There is never a clear way to do one thing."</p>
-            <p class="cs-insight__attribution" style="font-size: 11px; font-weight: 400; opacity: 0.45; margin-top: 8px; letter-spacing: 0.03em;">Customer — end-to-end satisfaction survey</p>
+            <p class="cs-insight__attribution" >Customer — end-to-end satisfaction survey</p>
           </div>
 
           <div class="reveal">
-            <dl class="cs-stats" aria-label="End-to-end satisfaction survey results" style="grid-template-columns: repeat(2, 1fr);">
+            <dl class="cs-stats cs-stats--2col" aria-label="End-to-end satisfaction survey results">
               <div class="cs-stat">
-                <dt class="cs-stat__label" style="order:2;">of 47 participants reported the platform was missing at least some features</dt>
-                <dd class="cs-stat__value" style="order:1;">89%</dd>
+                <dt class="cs-stat__label">of 47 participants reported the platform was missing at least some features</dt>
+                <dd class="cs-stat__value">89%</dd>
               </div>
               <div class="cs-stat">
-                <dt class="cs-stat__label" style="order:2;">identified gaps in existing features that directly impacted their usefulness</dt>
-                <dd class="cs-stat__value" style="order:1;">24</dd>
+                <dt class="cs-stat__label">identified gaps in existing features that directly impacted their usefulness</dt>
+                <dd class="cs-stat__value">24</dd>
               </div>
             </dl>
           </div>
 
           <div class="cs-insight reveal">
             <p>"Certain functionalities are difficult to use and some lead to multiple results, which decreases efficiency."</p>
-            <p class="cs-insight__attribution" style="font-size: 11px; font-weight: 400; opacity: 0.45; margin-top: 8px; letter-spacing: 0.03em;">Customer — end-to-end satisfaction survey</p>
+            <p class="cs-insight__attribution" >Customer — end-to-end satisfaction survey</p>
           </div>
 
           <!-- What we were designing -->
@@ -228,9 +222,7 @@
               Expected outcomes were a reusable template, development-ready designs for Keyword Lists, 
               and full workflows adoptable by designers and engineers across the product.
             </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Expected outcomes — reusable template, Keyword Lists designs, and system workflows">
-              <!-- <img src="assets/images/project1-expected-outcomes.jpg" alt="Expected outcomes — reusable template, Keyword Lists designs, and system workflows" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="Expected outcomes — reusable template, Keyword Lists designs, and system workflows"></div>
             <p class="cs-image-caption">Expected outcomes — reusable template, Keyword Lists designs, and system workflows</p>
           </div>
 
@@ -273,9 +265,7 @@
           <div class="reveal">
             <p class="cs-block__eyebrow">Approach</p>
             <h3 class="cs-block__heading">Step-by-Step Process</h3>
-                        <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Content audit and emerging template structure">
-              <!-- <img src="assets/images/project1-abstraction.jpg" alt="Content audit results and template structure" /> -->
-            </div>
+                        <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="Content audit and emerging template structure"></div>
             <p class="cs-image-caption">1. Abstraction, 2. Content Mapping, 3. Application, 4. Refinement</p>
           </div>
 
@@ -283,9 +273,7 @@
           <div class="reveal">
             <p class="cs-block__eyebrow">Stage 01 — Abstraction</p>
             <h3 class="cs-block__heading">Finding the structure beneath the surface</h3>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Diagram illustrating the relationship between objects and policies">
-              <!-- <img src="assets/images/project1-objects-diagram.jpg" alt="Diagram showing how objects feed into policies" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="Diagram illustrating the relationship between objects and policies"></div>
             <p class="cs-image-caption">Objects → policies: how risk detection components relate to compliance workflows</p>
             <p class="cs-block__body">
               A content audit resulted
@@ -293,9 +281,7 @@
               reference. This was validated with UX designers working on
               overlapping initiatives.
             </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Content audit and emerging template structure">
-              <!-- <img src="assets/images/project1-abstraction.jpg" alt="Content audit results and template structure" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="Content audit and emerging template structure"></div>
             <p class="cs-image-caption">Content audit — identifying patterns and focus</p>
             <p class="cs-block__body">
               From this foundation, two shared patterns emerged that would
@@ -304,9 +290,7 @@
               reusable template — a common starting point regardless of which
               compliance topic a designer or engineer was working in.
             </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Content audit and emerging template structure">
-              <!-- <img src="assets/images/project1-abstraction.jpg" alt="Content audit results and template structure" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="Content audit and emerging template structure"></div>
             <p class="cs-image-caption">Content structure and emerging template</p>
           </div>
 
@@ -327,9 +311,7 @@
               policy count, and additional controls — with no clear hierarchy or consistency across object 
               types. This created noise at exactly the point users needed focus: creating and refining the object.
             </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Header before simplification">
-              <!-- <img src="assets/images/project1-header-before.jpg" alt="Header before simplification" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="Header before simplification"></div>
             <p class="cs-image-caption">Header — before simplification</p>
             <p class="cs-block__body">Simplifying the header addressed three problems directly:</p>
             <ul class="cs-list" aria-label="Header problems addressed">
@@ -346,9 +328,7 @@
                 <p>Lack of separation between secondary information and primary actions</p>
               </li>
             </ul>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Header after simplification">
-              <!-- <img src="assets/images/project1-header-after.jpg" alt="Simplified header pattern with clear separation of information and actions" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="Header after simplification"></div>
             <p class="cs-image-caption">Header — simplified pattern with clear separation of information and actions</p>
           </div>
 
@@ -369,18 +349,14 @@
                 <p>A dedicated secondary page — relocated the problem rather than solving it</p>
               </li>
             </ul>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Side panel explorations — accordion and secondary page approaches">
-              <!-- <img src="assets/images/project1-sidepanel-explorations.jpg" alt="Explorations — accordion and secondary page approaches" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="Side panel explorations — accordion and secondary page approaches"></div>
             <p class="cs-image-caption">Explorations — accordion and secondary page approaches</p>
             <p class="cs-block__body">
               The Side Panel keeps secondary content present without competing for attention. A content 
               audit across all object types defined what the panel would consistently hold, making it 
               predictable across the product — users learn the pattern once and carry it forward.
             </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Side panel — secondary content present without competing for attention">
-              <!-- <img src="assets/images/project1-sidepanel-final.jpg" alt="Side Panel — secondary content present without competing for attention" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="Side panel — secondary content present without competing for attention"></div>
             <p class="cs-image-caption">Side Panel — secondary content present without competing for attention</p>
           </div>
 
@@ -397,18 +373,14 @@
               like Preapproved Content required tabs to support multiple workflows and a more flexible 
               layout system to group content effectively.
             </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="Keyword Lists vs Preapproved Content — template flexibility">
-              <!-- <img src="assets/images/project1-template-flexibility.jpg" alt="Keyword Lists (single workflow) vs Preapproved Content (tabbed, multi-card layout)" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="Keyword Lists vs Preapproved Content — template flexibility"></div>
             <p class="cs-image-caption">Keyword Lists vs. Preapproved Content — template flexibility</p>
             <p class="cs-block__body">
               Applying the template also challenged some inherited assumptions. AI Surveillance displayed 
               subcategories and indicators as a table — but the content was purely informational with no 
               actions. Redesigning it as readable content made the page significantly easier to scan.
             </p>
-            <div class="cs-image cs-image--16-9 reveal" style="margin-top: 24px;" role="img" aria-label="AI Surveillance — informational content redesigned for readability">
-              <!-- <img src="assets/images/project1-ai-surveillance.jpg" alt="AI Surveillance — informational content redesigned for readability" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9" role="img" aria-hidden="true" aria-label="AI Surveillance — informational content redesigned for readability"></div>
             <p class="cs-image-caption">AI Surveillance — informational content redesigned for readability</p>
             <p class="cs-block__body">
               Some workflows were intentionally left out of scope. Policy creation and review queue 
@@ -464,35 +436,27 @@
           <div class="reveal">
             <p class="cs-block__eyebrow">Final Screens</p>
             <h3 class="cs-block__heading">The finished product</h3>
-            <div class="cs-image cs-image--16-9 cs-image--dark" role="img" aria-label="Overview of template, Keyword Lists, and design system" style="margin-top: 8px;">
-              <!-- <img src="assets/images/project1-final-overview.jpg" alt="Overview of the template, Keyword Lists designs, and design system components" /> -->
-            </div>
+            <div class="cs-image cs-image--16-9 cs-image--dark" role="img" aria-hidden="true" aria-label="Overview of template, Keyword Lists, and design system"></div>
             <p class="cs-image-caption">Template, Keyword Lists, and design system — overview</p>
-            <div class="cs-image-grid reveal" style="margin-top: 16px;">
-              <div class="cs-image cs-image--4-3 cs-image--dark" role="img" aria-label="Keyword Lists create flow">
-                <!-- <img src="assets/images/project1-kwl-create.jpg" alt="Keyword Lists create flow" /> -->
-              </div>
-              <div class="cs-image cs-image--4-3 cs-image--dark" role="img" aria-label="Keyword Lists edit flow">
-                <!-- <img src="assets/images/project1-kwl-edit.jpg" alt="Keyword Lists edit flow" /> -->
-              </div>
+            <div class="cs-image-grid">
+              <div class="cs-image cs-image--4-3 cs-image--dark" role="img" aria-hidden="true" aria-label="Keyword Lists create flow"></div>
+              <div class="cs-image cs-image--4-3 cs-image--dark" role="img" aria-hidden="true" aria-label="Keyword Lists edit flow"></div>
             </div>
             <p class="cs-image-caption">Keyword Lists — create and edit flows</p>
           </div>
 
-          <!-- Outcomes -->
-          <div class="reveal">
+          <!-- Outcomes: hidden until content is confirmed -->
+          <!-- <div class="reveal">
             <p class="cs-block__eyebrow">Results</p>
             <h3 class="cs-block__heading">What changed after launch</h3>
-            <!-- TBD: replace with qualitative outcomes or any available post-launch data -->
-          </div>
+          </div> -->
 
           <!-- Reflection -->
           <div class="reveal">
             <p class="cs-block__eyebrow">Reflection</p>
             <h3 class="cs-block__heading">What I'd do differently</h3>
             <p class="cs-block__body">
-              Setting expectations early was one of the most important things
-              we did — and it still wasn't early enough. A clearer project
+              Setting expectations early was critical — and it still wasn't early enough. A clearer project
               brief from the start would have saved time when timelines and
               priorities needed renegotiating. I now treat the brief as a
               living document and revisit it with stakeholders at the beginning
@@ -515,8 +479,8 @@
     <!-- Next project -->
     <a href="case-study.html" class="cs-next" aria-label="Next project: Project 2">
       <div>
-        <p class="cs-next__label">Next Project</p>
-        <p class="cs-next__title">Project 2</p>
+        <p class="cs-next__label" aria-hidden="true">Next Project</p>
+        <p class="cs-next__title" aria-hidden="true">Project 2</p>
       </div>
       <div class="cs-next__arrow" aria-hidden="true">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -532,7 +496,7 @@
        FOOTER
   ══════════════════════════════════════ -->
   <footer class="site-footer" role="contentinfo">
-    <span>© 2024 Evelyn Kuang</span>
+    <span>© 2026 Evelyn Kuang</span>
     <span>Vancouver, CA</span>
     <a href="mailto:hello@evelynkuang.com">hello@evelynkuang.com</a>
   </footer>

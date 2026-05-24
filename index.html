@@ -3,248 +3,143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ── SEO ── -->
   <title>Evelyn Kuang — UX/UI Designer</title>
   <meta name="description" content="Portfolio of Evelyn Kuang, a UX/UI designer based in Vancouver, CA. Focused on interaction design and scalable design systems." />
   <link rel="canonical" href="https://evelynkuang.com/" />
-
-  <!-- ── Open Graph ── -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://evelynkuang.com/" />
   <meta property="og:title"       content="Evelyn Kuang — UX/UI Designer" />
   <meta property="og:description" content="Portfolio of Evelyn Kuang, a UX/UI designer based in Vancouver, CA." />
   <meta property="og:image"       content="assets/images/og-image.png" />
-
-  <!-- ── Twitter Card ── -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Evelyn Kuang — UX/UI Designer" />
   <meta name="twitter:description" content="Portfolio of Evelyn Kuang, UX/UI designer based in Vancouver, CA." />
   <meta name="twitter:image"       content="assets/images/og-image.png" />
-
-  <!-- ── Fonts ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- ── Styles ── -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
 
-  <!-- ══════════════════════════════════════
-       NAVIGATION
-  ══════════════════════════════════════ -->
   <header role="banner">
     <nav class="nav" aria-label="Main navigation">
       <a href="index.html" class="nav__logo" aria-label="Evelyn Kuang — home">EK</a>
-
       <ul class="nav__links" role="list">
-        <li><a href="#work"    aria-current="page">Work</a></li>
+        <li><a href="#work" aria-current="page">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-
-      <a href="assets/evelyn-kuang-resume.pdf"
-         class="nav__cta"
-         target="_blank"
-         rel="noopener noreferrer"
-         aria-label="View resume (opens in new tab)">
-        View Resume
-      </a>
+      <a href="assets/evelyn-kuang-resume.pdf" class="nav__cta" target="_blank" rel="noopener noreferrer" aria-label="View resume (opens in new tab)">View Resume</a>
     </nav>
   </header>
 
-  <!-- ══════════════════════════════════════
-       MAIN — TWO-COLUMN SPLIT
-  ══════════════════════════════════════ -->
   <main id="main-content">
     <div class="layout-split">
 
-      <!-- ── LEFT: HERO ── -->
+      <!-- LEFT: HERO -->
       <section class="hero" id="about" aria-label="Introduction">
         <div class="hero__inner">
-
-          <!-- Role tag -->
           <p class="hero__role" aria-label="Role">
             <span class="hero__role-dash" aria-hidden="true"></span>
             UX/UI Designer
           </p>
-
-          <!-- Name -->
-          <h1 class="hero__name" aria-label="Evelyn Kuang">
-            Evelyn Kuang
-          </h1>
-
-          <!-- Location -->
+          <h1 class="hero__name" aria-label="Evelyn Kuang">Evelyn Kuang</h1>
           <p class="hero__location">Based in Vancouver, CA</p>
-
-          <!-- Bio -->
           <p class="hero__body">
             Focused on building scalable design systems that support AI-assisted workflows, and carrying problems <strong>from definition through execution</strong> across the full user journey.
           </p>
-
-          <!-- CTA buttons -->
           <div class="hero__actions">
-            <a href="#work"
-               class="btn btn--primary"
-               aria-label="View all work">
-              View All Work
-            </a>
-            <a href="assets/evelyn-kuang-resume.pdf"
-               class="btn btn--outline"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="View resume (opens in new tab)">
-              View Resume
-            </a>
+            <a href="#work" class="btn btn--primary" aria-label="View all work">View All Work</a>
+            <a href="assets/evelyn-kuang-resume.pdf" class="btn btn--outline" target="_blank" rel="noopener noreferrer" aria-label="View resume (opens in new tab)">View Resume</a>
           </div>
-
-          <!-- Contact icons -->
           <div class="hero__contact" id="contact" aria-label="Contact links">
-            <a href="mailto:hello@evelynkuang.com"
-               class="hero__contact-icon"
-               aria-label="Email">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="2"/>
-                <polyline points="3,5 12,13 21,5"/>
-              </svg>
+            <a href="mailto:hello@evelynkuang.com" class="hero__contact-icon" aria-label="Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3,5 12,13 21,5"/></svg>
             </a>
-            <a href="https://linkedin.com/in/evelynkuang"
-               class="hero__contact-icon"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="LinkedIn (opens in new tab)">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect x="2" y="9" width="4" height="12"/>
-                <circle cx="4" cy="4" r="2"/>
-              </svg>
+            <a href="https://linkedin.com/in/evelynkuang" class="hero__contact-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
-            <a href="https://dribbble.com/evelynkuang"
-               class="hero__contact-icon"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Dribbble (opens in new tab)">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/>
-              </svg>
+            <a href="https://dribbble.com/evelynkuang" class="hero__contact-icon" target="_blank" rel="noopener noreferrer" aria-label="Dribbble (opens in new tab)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
             </a>
-            <a href="https://read.cv/evelynkuang"
-               class="hero__contact-icon"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Read.cv (opens in new tab)">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="16" y1="13" x2="8" y2="13"/>
-                <line x1="16" y1="17" x2="8" y2="17"/>
-                <polyline points="10 9 9 9 8 9"/>
-              </svg>
+            <a href="https://read.cv/evelynkuang" class="hero__contact-icon" target="_blank" rel="noopener noreferrer" aria-label="Read.cv (opens in new tab)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             </a>
-            <a href="tel:+16041234567"
-               class="hero__contact-icon"
-               aria-label="Phone">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
+            <a href="tel:+16041234567" class="hero__contact-icon" aria-label="Phone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </a>
           </div>
-
         </div>
-      </section><!-- /hero -->
+      </section>
 
-      <!-- ── RIGHT: PROJECTS ── -->
+      <!-- RIGHT: PROJECTS -->
       <section class="projects-panel" id="work" aria-label="Selected work">
         <div class="projects-feed">
 
-          <!-- Project 1 -->
           <article class="project-card" style="--i:0" aria-label="Project 1">
             <div class="card-inner">
-              <div class="card-image" role="img" aria-label="Project 1 preview image">
+              <div class="card-image" role="img" aria-label="Global Relay Archive preview image">
                 <div class="card-image__placeholder" aria-hidden="true"></div>
               </div>
               <div class="card-body">
-                <p class="card-meta">Branding &amp; Strategy — 2026</p>
+                <p class="card-meta">Enterprise UX Systems — 2026</p>
                 <h2 class="card-title">Global Relay Archive</h2>
-                <p class="card-desc">
-                  How do we evolve a 2010-era application into a product that respects existing workflows while adapting to today’s technology landscape?
-                </p>
-                <a href="gr-refresh.html" class="card-link" aria-label="View Project 1 case study">
+                <p class="card-desc">How do we evolve a 2010-era application into a product that respects existing workflows while adapting to today's technology landscape?</p>
+                <a href="gr-refresh.html" class="card-link" aria-label="View Global Relay Archive case study">
                   View Case Study
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                  </svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- Project 2 -->
           <article class="project-card" style="--i:1" aria-label="Project 2">
             <div class="card-inner">
-              <div class="card-image" role="img" aria-label="Project 2 preview image">
+              <div class="card-image" role="img" aria-label="Managing Dashboard Content preview image">
                 <div class="card-image__placeholder" aria-hidden="true"></div>
               </div>
               <div class="card-body">
                 <p class="card-meta">Case Study — 2025</p>
                 <h2 class="card-title">Managing Dashboard Content</h2>
-                <p class="card-desc">
-                  Improving visibility into dashboard data by clarifying complex systems and making dynamic metrics easier to understand.
-                </p>
-                <a href="case-study.html" class="card-link" aria-label="View Project 2 case study">
+                <p class="card-desc">Improving visibility into dashboard data by clarifying complex systems and making dynamic metrics easier to understand.</p>
+                <a href="case-study.html" class="card-link" aria-label="View Managing Dashboard Content case study">
                   View Case Study
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                  </svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- Project 3 -->
           <article class="project-card" style="--i:2" aria-label="Project 3">
             <div class="card-inner">
-              <div class="card-image" role="img" aria-label="Project 3 preview image">
+              <div class="card-image" role="img" aria-label="Dashboard Colour Palette preview image">
                 <div class="card-image__placeholder" aria-hidden="true"></div>
               </div>
               <div class="card-body">
                 <p class="card-meta">Design Systems — 2025</p>
                 <h2 class="card-title">Dashboard Colour Palette</h2>
-                <p class="card-desc">
-                  TBD
-                </p>
-                <a href="case-study.html" class="card-link" aria-label="View Project 3 case study">
+                <p class="card-desc">TBD</p>
+                <a href="case-study.html" class="card-link" aria-label="View Dashboard Colour Palette case study">
                   View Case Study
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                  </svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- View all -->
           <a href="#work" class="view-all-bar" aria-label="View all projects">
             <span>View All Projects</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
 
         </div>
-      </section><!-- /projects-panel -->
+      </section>
 
     </div>
   </main>
 
-  <!-- ══════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════ -->
   <footer class="site-footer" role="contentinfo">
     <span>© 2026 Evelyn Kuang</span>
     <a href="#">hello@evelynkuang.com</a>
