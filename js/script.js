@@ -46,7 +46,8 @@
 
   /* ── 3. ACTIVE NAV LINK (homepage) ──────────────────────── */
   function initNavSpy() {
-    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    /* Fixed: was '.nav-links a' — correct class is '.nav__links' */
+    const navLinks = document.querySelectorAll('.nav__links a[href^="#"]');
     if (!navLinks.length) return;
 
     const sectionIds = Array.from(navLinks).map(a =>
