@@ -1023,7 +1023,110 @@ body.page--home .projects-panel {
 
 
 /* ============================================================
-   15. RESPONSIVE BREAKPOINTS
+   15. LIGHTBOX
+   ============================================================ */
+
+/* Clickable image cursor */
+.cs-image:has(img),
+.card-image:has(img) {
+  cursor: zoom-in;
+}
+
+/* Overlay */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 48px);
+  background-color: rgba(10, 10, 10, 0);
+  transition: background-color var(--dur-slow) var(--ease-out);
+  pointer-events: none;
+}
+.lightbox.is-open {
+  background-color: rgba(10, 10, 10, 0.92);
+  pointer-events: all;
+}
+
+/* Inner container */
+.lightbox__inner {
+  position: relative;
+  max-width: min(92vw, 1200px);
+  max-height: 90vh;
+  opacity: 0;
+  transform: scale(0.96) translateY(8px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+.lightbox.is-open .lightbox__inner {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Image */
+.lightbox__img {
+  display: block;
+  max-width: 100%;
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-lg);
+  object-fit: contain;
+}
+
+/* Caption */
+.lightbox__caption {
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: var(--weight-medium);
+  color: var(--color-gray-400);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* Close button */
+.lightbox__close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: var(--color-white);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast),
+    background-color var(--dur-fast);
+  flex-shrink: 0;
+}
+.lightbox__close:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.lightbox__close:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .lightbox,
+  .lightbox__inner {
+    transition: none;
+  }
+}
+
+
+/* ============================================================
+   16. RESPONSIVE BREAKPOINTS
    ============================================================ */
 
 /* ── Tablet (≤ 900px) ── */
